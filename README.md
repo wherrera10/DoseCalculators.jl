@@ -7,7 +7,10 @@ Gtk medication dosage calculators for Julia
 ## Usage:
 
 First you should define a function which takes named  arguments weight = kg, height = cm, and age = years.
+
 See the file examples/Medications.jl for examples of formulas. 
+
+This type of app does not consider concomitant medications. If there are such issues, consider mention in the text of `rlabel`.
 <br /><br />
 
 #### <em>Always</em> sanity check medical apps for errors! Unchecked unit or decimal place errors <em>can kill!</em>

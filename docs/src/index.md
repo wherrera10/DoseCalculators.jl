@@ -39,7 +39,8 @@ Arguments:
             return weight * 37.0
         else
             return 1500.0
-      end
+        end
+    end
      
     dose_calculator_app(amoxacillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)")
                                        

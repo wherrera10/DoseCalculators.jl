@@ -1,2 +1,4 @@
 # DoseCalculators.jl
-Gtk medication dosage calculators
+
+Gtk medication dosage calculators for Julia
+

@@ -2,5 +2,5 @@ using DoseCalculators
 
 include "medication_formulas.jl"
 
-dose_calculator_app(amoxacillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)")
+dose_calculator_app(amoxicillin_po, "Amoxicillin PO Dosing", "Amoxicillin dosage(mg)")
 

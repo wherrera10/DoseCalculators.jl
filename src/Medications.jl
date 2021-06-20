@@ -4,6 +4,9 @@
 # The function should return total daily (24 hour) dosage in milligrams or else as must be specified in the rlabel argument to the app. 
 ######################
 
+module Medications
+
+export amoxacillin_po, metformin, metoprolol_extended
 
 """
     function amoxicillin_po(; age, weight, height)
@@ -54,3 +57,4 @@ function metoprolol_extended(; age, weight, height)
     end
 end
 
+end # module

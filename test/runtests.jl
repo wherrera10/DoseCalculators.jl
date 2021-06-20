@@ -12,7 +12,7 @@ end
 
 dose_calculator_app(amoxicillin_po, "Amoxicillin PO Dosing", "Amoxicillin dosage(mg)")
 
-win = DoseCalculators.apps[end]
+win = DoseCalculators._apps[end]
 
 @test win isa GtkWindow
 

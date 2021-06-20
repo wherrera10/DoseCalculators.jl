@@ -1,4 +1,6 @@
-using Gtk, DoseCalculators
+using Gtk
+using Test
+using DoseCalculators
 
 function amoxicillin_po(; age, weight, height)
     if age <= 3/12

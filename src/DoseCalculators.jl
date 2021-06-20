@@ -4,6 +4,15 @@ export dose_calculator_app
 
 using Gtk
 
+"""
+    dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results")
+
+Create a `Gtk` widget with entries for `weight`, `height`, `age`, and dose interval.
+Arguments:
+`func` is a function which takes named arguments age = years, weight =  kg, height = cm and returns total 24-hour dosage in mg.
+`title` is the title for the app
+`rlabel` is the label to be given the results
+"""
 function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results")
     wentry, aentry, hentry, qentry = GtkEntry(), GtkEntry(), GtkEntry(), GtkEntry()
     weightunits = [GtkRadioButton("kg")]

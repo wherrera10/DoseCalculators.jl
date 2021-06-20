@@ -10,7 +10,7 @@ First you should define a function which takes named  arguments weight = kg, hei
 See the file examples/Medications.jl for examples of formulas. 
 <br /><br />
 
-#### <em>Always</em> sanity check medical apps for errors! Unchecked unit or decimal place errors </em>can kill!<em/>
+#### <em>Always</em> sanity check medical apps for errors! Unchecked unit or decimal place errors <em>can kill!</em>
 
 <br /><br />
 

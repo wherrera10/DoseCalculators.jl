@@ -60,6 +60,8 @@ function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel =
         signal_connect(endit, win, :destroy)
         showall(win)
         wait(cond)
+    else
+        sleep(5)
     end
 end
 

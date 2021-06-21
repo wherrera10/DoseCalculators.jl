@@ -42,11 +42,11 @@ function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel =
     push!(vbox, wbox, abox, hbox, qbox, resultbox)
 
     function calculate(w)
-        wt = parse(Float64, get_gtk_property(wentry, :text, String)) /
+        wt = tryparse(Float64, get_gtk_property(wentry, :text, String)) /
             (get_gtk_property(weightunits[1], :active, Bool) ? 1 : 0.393701)
-        ht = parse(Float64, get_gtk_property(hentry, :text, String)) *
+        ht = tryparse(Float64, get_gtk_property(hentry, :text, String)) *
             (get_gtk_property(heightunits[1], :active, Bool) ? 1 : 2.20462)
-        ag = parse(Float64, get_gtk_property(aentry, :text, String)) /
+        ag = tryparse(Float64, get_gtk_property(aentry, :text, String)) /
             (get_gtk_property(ageunits[1], :active, Bool) ? 1 : 12)
         result = func(weight = wt, height = ht, age = ag)
         dosagefraction = parse(Float64, get_gtk_property(qentry, :text, String)) / 24

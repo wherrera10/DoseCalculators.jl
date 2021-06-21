@@ -12,10 +12,8 @@ function amoxicillin_po(; age, weight, height)
     end
 end
 
-dose_calculator_app(amoxicillin_po, "Amoxicillin PO Dosing", "Amoxicillin dosage(mg)")
+DoseCalculators._apps_should_persist[1] = false
+     
+dose_calculator_app(amoxicillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)")
 
-win = DoseCalculators._apps[end]
-
-@test win isa GtkWindow
-
-Gtk.destroy(win)
+@test DoseCalculators._apps[end] isa GtkWindow

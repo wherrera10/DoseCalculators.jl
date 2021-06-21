@@ -1,6 +1,6 @@
 authors = ["William Herrera <wherrera@alahonua.com>"]
 name = "DoseCalculators"
-uuid = "4239201d-c60e-5e0a-9702-85d713665ba7"
+uuid = "fb202ad0-d22e-11eb-2fc2-a7d76729265e"
 version = "0.1.0"
 
 [deps]

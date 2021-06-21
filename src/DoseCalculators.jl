@@ -63,7 +63,7 @@ function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel =
         showall(win)
         wait(cond)
     else
-        sleep(20)
+        sleep(5)
     end
 end
 

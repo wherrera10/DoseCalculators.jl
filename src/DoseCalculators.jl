@@ -56,7 +56,7 @@ function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel =
 
     signal_connect(calculate, resultbutton, :clicked)
 
-    if _apps_should_persist
+    if _apps_should_persist[1]
         cond = Condition()
         endit(w) = notify(cond)
         signal_connect(endit, win, :destroy)

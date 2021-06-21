@@ -24,7 +24,7 @@ This type of app does not consider concomitant medications. If there are such is
 Create a `Gtk` widget with entries for `weight`, `height`, `age`, and dose interval.
 Arguments:
 `func` is a function which takes named arguments age = years, weight =  kg, height = cm and returns total 24-hour dosage in mg.
-`title` is the title for the app
+`title` is the title for the app, and 
 `rlabel` is the label to be given the results
 <br /><br />
 

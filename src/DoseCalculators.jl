@@ -4,6 +4,7 @@ export dose_calculator_app
 
 using Gtk
 
+const _apps = GtkWindow[]
 const _apps_should_persist = [true]
 
 """
@@ -26,6 +27,7 @@ function dose_calculator_app(func::Function, title = "Dose Calculator", rlabel =
     resultbutton = GtkButton("Calculate")
     resultlabel = GtkLabel("0")
     win = GtkWindow(title, 500, 100) |> (GtkFrame() |> (vbox = GtkBox(:v)))
+    push!(_apps, win)
     wbox = GtkButtonBox(:h)
     push!(wbox, GtkLabel("Patient Weight"), wentry, weightunits...)
     abox = GtkButtonBox(:h)

@@ -42,7 +42,7 @@ Arguments:
         end
     end
      
-    dose_calculator_app(amoxacillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)")
+    dose_calculator_app(amoxicillin_po, "Amoxicillin PO Dosing", "Amoxicillin dosage(mg)")
                                        
 See the `examples` directory for other examples of formulas.
 <br /><br />

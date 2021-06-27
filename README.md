@@ -19,7 +19,7 @@ This type of app does not consider concomitant medications. If there are such is
 
 ## Functions:
   
-    dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results")
+####    dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results")
 
 Create a `Gtk` widget with entries for `weight`, `height`, `age`, and dose interval.
 Arguments:

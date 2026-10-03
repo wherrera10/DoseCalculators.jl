@@ -23,8 +23,7 @@ jobs:
         version:
           - "1"
         os:
-          - windows
-
+          - windows-latest
         arch:
           - x64
 

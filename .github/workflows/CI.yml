@@ -23,7 +23,7 @@ jobs:
         version:
           - "1"
         os:
-          - ubuntu-latest
+          - windows
 
         arch:
           - x64

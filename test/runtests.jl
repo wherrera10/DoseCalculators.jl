@@ -1,4 +1,4 @@
-using Gtk
+using Gtk4
 using Test
 using DoseCalculators
 
@@ -12,7 +12,7 @@ function amoxicillin_po(; age, weight, height)
     end
 end
 
-DoseCalculators._apps_should_persist[1] = false
+DoseCalculators._apps_should_persist[] = false
      
 dose_calculator_app(amoxicillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)")
 

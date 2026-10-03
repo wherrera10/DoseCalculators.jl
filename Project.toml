@@ -1,10 +1,10 @@
 authors = ["William Herrera <wherrera@alahonua.com>"]
 name = "DoseCalculators"
 uuid = "fb202ad0-d22e-11eb-2fc2-a7d76729265e"
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
-Gtk = "4c0ca9eb-093a-5379-98c5-f87ac0bbbf44"
+Gtk4 = "9db2cae5-386f-4011-9d63-a5602296539b"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
@@ -13,7 +13,7 @@ Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 
 [compat]
 julia = "1"
-Gtk = "1"
+Gtk4 = "0.7"
 
 [targets]
 test = ["Pkg", "Test"]

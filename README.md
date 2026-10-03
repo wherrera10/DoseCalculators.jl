@@ -4,6 +4,10 @@
 
 Gtk4 medication dosage calculators for Julia
 
+
+[![Build Status](https://github.com/wherrera10/DoseCalculators.jl/workflows/CI/badge.svg)](https://github.com/wherrera10/DoseCalculators.jl/actions)
+
+
 ## Usage:
 
 First you should define a function which takes named  arguments weight = kg, height = cm, and age = years.

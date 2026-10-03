@@ -81,6 +81,5 @@ jobs:
 
       - run: julia --project=docs docs/make.jl
         env:
-          FACEDETECT_DEPLOY_DOCS: "false"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}

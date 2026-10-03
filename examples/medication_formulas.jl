@@ -6,7 +6,10 @@
 ######################
 
 """
-    function amoxicillin_po(; age, weight, height)
+    amoxicillin_po(; age, weight, height)
+
+Educational example only; verify current prescribing guidance before use.
+
 Source: https://www.mayoclinic.org/drugs-supplements/penicillin-oral-route-injection-route-intravenous-route-intramuscular-route/proper-use/drg-20062334
 For amoxicillin:
 For bacterial infections:
@@ -20,16 +23,20 @@ Infants 3 months of age and older and children weighing up to 40 kg (88 lbs.)
   12.5 to 22.5 mg per kg (5.7 to 10.2 mg per pound) of body weight every twelve hours.
 """
 function amoxicillin_po(; age, weight, height)
-    if age <= 3/12
+    if age <= 3 / 12
         return weight * 30.0
     elseif age <= 16 && weight <= 40
         return weight * 37.0
     else
         return 1500.0
-  end
-  
+    end
+end
+
 """
-    function metformin(; age, weight, height)
+    metformin_mg(; age, weight, height)
+
+Educational example only; no prescribing source is supplied here.
+
 Metformin in age < 7 years or nonobese is not generally used. Otherwise monotherapy dose starts at 1000 mg.
 """
 function metformin_mg(; age, weight, height)
@@ -41,7 +48,9 @@ function metformin_mg(; age, weight, height)
 end
 
 """
-    function metoprolol_extended(; age, weight, height)
+    metoprolol_extended(; age, weight, height)
+
+Educational example only; no prescribing source is supplied here.
   
 """
 function metoprolol_extended(; age, weight, height)
@@ -54,6 +63,8 @@ end
 
 """
     levetiracetam_starting_po(; age, weight, height)
+
+Educational example only; verify current prescribing guidance before use.
 
 Source:    https://www.rxlist.com/keppra-drug.htm#indications 
 Initial treatment
@@ -77,6 +88,8 @@ end
 
 """
     lamotrigine_starting_po(; age, weight, height)
+
+Educational example only; verify current prescribing guidance before use.
     
 Refer to tables at https://www.rxlist.com/lamictal-drug.htm#dosage
 Note dose may change based on other medications ESPECIALLY VALPROATE

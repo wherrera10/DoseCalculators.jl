@@ -13,6 +13,6 @@ function amoxicillin_po(; age, weight, height)
 end
 
      
-app = dose_calculator_app(amoxicillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)"; wait_for_close::Bool = false)
+app = dose_calculator_app(amoxicillin_po, "Amoxacillin PO Dosing", "Amoxacillin dosage(mg)"; wait_for_close = false)
 
 @test app isa GtkWindow

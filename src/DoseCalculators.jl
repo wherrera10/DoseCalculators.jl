@@ -46,10 +46,24 @@ function dose_calculator_app(
     height_cm.active = true
 
     resultbutton = GtkButton("Calculate")
-    resultlabel = GtkLabel("—")
     statuslabel = GtkLabel("")
 
     win = GtkWindow(title, 500, 180)
+    function install_result_css!(win)
+        css = """
+        .dose-result {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Sans;
+        }
+        """
+        push!(Gtk4.display(win), GtkCssProvider(css))
+    end
+    install_result_css!(win)
+
+    resultlabel = GtkLabel("—")
+    add_css_class(resultlabel, "dose-result")
+
     vbox = GtkBox(:v)
     win[] = vbox
     push!(_apps, win)

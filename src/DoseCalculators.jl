@@ -7,7 +7,8 @@ using Gtk4
 const _apps = GtkWindow[]
 
 """
-    dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results (mg)"; wait_for_close = false)
+    dose_calculator_app(func::Function, title = "Dose Calculator", rlabel = "Results (mg)";
+                        wait_for_close::Bool = true)
 
 Create a Gtk4 window with entries for `weight`, `height`, `age`, and dose interval.
 
@@ -18,15 +19,30 @@ Arguments:
 - `rlabel`: label for the results row
 - `wait_for_close`: if `true`, block until the window is closed; otherwise return the window
 
-The displayed result is the amount per dose, derived from the formula's total
-24-hour amount. This is an educational calculator, not a prescribing tool.
+The displayed result is the amount per dose, derived from the formula's 
+total 24-hour amount. 
 """
 function dose_calculator_app(
     func::Function,
     title = "Dose Calculator",
     rlabel = "Results (mg)";
-    wait_for_close::Bool = false,
+    wait_for_close::Bool = true,
 )
+
+    win = GtkWindow(title, 500, 180)
+
+    function install_result_css!(win)
+        css = """
+    .dose-result {
+        font-size: 28px;
+        font-weight: bold;
+        font-family: Sans;
+    }
+    """
+        push!(Gtk4.display(win), GtkCssProvider(css))
+    end
+    install_result_css!(win)
+
     wentry, aentry, hentry, qentry = GtkEntry(), GtkEntry(), GtkEntry(), GtkEntry()
     qentry.text = "12"
 
@@ -46,23 +62,10 @@ function dose_calculator_app(
     height_cm.active = true
 
     resultbutton = GtkButton("Calculate")
-    statuslabel = GtkLabel("")
-
-    win = GtkWindow(title, 500, 180)
-    function install_result_css!(win)
-        css = """
-        .dose-result {
-            font-size: 20px;
-            font-weight: bold;
-            font-family: Sans;
-        }
-        """
-        push!(Gtk4.display(win), GtkCssProvider(css))
-    end
-    install_result_css!(win)
-
     resultlabel = GtkLabel("—")
     add_css_class(resultlabel, "dose-result")
+
+    statuslabel = GtkLabel("")
 
     vbox = GtkBox(:v)
     win[] = vbox
@@ -83,13 +86,25 @@ function dose_calculator_app(
     resultbox = GtkBox(:h)
     push!(resultbox, GtkLabel("$rlabel per dose:"), resultlabel, resultbutton)
     push!(vbox, wbox, abox, hbox, qbox, resultbox)
-    push!(vbox, GtkLabel("The formula must return a total 24-hour amount; the displayed value is per dose."))
-    push!(vbox, GtkLabel("WARNING: Educational estimate only. Verify the dose with current prescribing information and a qualified clinician."))
+    push!(
+        vbox,
+        GtkLabel(
+            "The formula must return a total 24-hour amount; the displayed value is per dose.",
+        ),
+    )
+    push!(
+        vbox,
+        GtkLabel(
+            "WARNING: Educational estimate only. Verify the dose with current prescribing information and a qualified clinician.",
+        ),
+    )
     push!(vbox, statuslabel)
 
+    window_open = Ref(true)
     closed = wait_for_close ? Condition() : nothing
     signal_connect(win, "destroy") do _
         filter!(app -> app !== win, _apps)
+        window_open[] = false
         wait_for_close && notify(closed)
     end
 
@@ -123,9 +138,11 @@ function dose_calculator_app(
     end
 
     signal_connect(calculate, resultbutton, "clicked")
-    Gtk4.start_main_loop()
+    !isinteractive() && Gtk4.start_main_loop()
     if wait_for_close
         wait(closed)
+    else
+        sleep(5)
     end
     win
 end # app function
@@ -139,8 +156,11 @@ end
 function _validate_number(value::Real, name; allow_zero = false)
     number = Float64(value)
     isfinite(number) || throw(ArgumentError("$name must be a finite number."))
-    (allow_zero ? number >= 0 : number > 0) ||
-        throw(ArgumentError("$name must be $(allow_zero ? "zero or greater" : "greater than zero")."))
+    (allow_zero ? number >= 0 : number > 0) || throw(
+        ArgumentError(
+            "$name must be $(allow_zero ? "zero or greater" : "greater than zero").",
+        ),
+    )
     number
 end
 
@@ -159,11 +179,14 @@ function _dose_per_interval(
     ag = _validate_number(age, "Age"; allow_zero = true)
     dose_interval = _validate_number(interval, "Dose interval")
 
-    weight_unit === :kg || weight_unit === :lb ||
+    weight_unit === :kg ||
+        weight_unit === :lb ||
         throw(ArgumentError("Weight unit must be :kg or :lb."))
-    height_unit === :cm || height_unit === :in ||
+    height_unit === :cm ||
+        height_unit === :in ||
         throw(ArgumentError("Height unit must be :cm or :in."))
-    age_unit === :years || age_unit === :months ||
+    age_unit === :years ||
+        age_unit === :months ||
         throw(ArgumentError("Age unit must be :years or :months."))
 
     wt = weight_unit === :kg ? wt : wt / 2.20462
@@ -179,7 +202,7 @@ function _dose_per_interval(
     isfinite(per_dose) ||
         throw(ArgumentError("The calculated per-dose amount is not finite."))
     per_dose
-end
+end # app
 
 
 end # module
